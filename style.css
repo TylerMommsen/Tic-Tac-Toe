@@ -80,6 +80,29 @@ body {
     font-size: 2rem;
 }
 
+.dark-overlay {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.winner-display {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    color: white;
+    z-index: 2;
+}
+
 .game-display {
     height: var(--heightArea);
     width: var(--widthArea);

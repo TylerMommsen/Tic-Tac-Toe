@@ -26,6 +26,8 @@ const displayController = (() => {
     const boardSquares = document.querySelectorAll('.square');
     const userScore = document.querySelector('#user');
     const computerScore = document.querySelector('#computer');
+    const winnerDisplay = document.querySelector('.winner-display');
+    const darkOverlay = document.querySelector('.dark-overlay');
 
     boardSquares.forEach(function (square, index) {
         square.addEventListener('click', () => {
@@ -50,9 +52,23 @@ const displayController = (() => {
         boardSquares.forEach(function (square) {
             square.textContent = '';
         })
+
+        if (winnerDisplay.style.display === 'flex') {
+            darkOverlay.style.display = 'none';
+            winnerDisplay.style.display = 'none';
+            winnerDisplay.textContent = ``;
+            userScore.textContent = 'User: 0';
+            computerScore.textContent = 'Computer: 0';
+        }
     }
 
-    return { boardSquares, updateScore, resetBoardUI };
+    const displayWinner = (winner) => {
+        darkOverlay.style.display = 'block';
+        winnerDisplay.style.display = 'flex';
+        winnerDisplay.textContent = `${winner.name[0].toUpperCase()}${winner.name.slice(1)} wins!`;
+    }
+
+    return { boardSquares, updateScore, resetBoardUI, displayWinner };
 })();
 
 
@@ -64,8 +80,13 @@ const gameController = (() => {
 
     const checkGameWinner = () => {
         if (scores[currentTurn.name] === 3) {
-            console.log('winner is ' + currentTurn.name + '!');
-            return currentTurn;
+            displayController.displayWinner(currentTurn);
+            setTimeout(() => { 
+                displayController.resetBoardUI();
+                scores['user'] = 0;
+                scores['computer'] = 0;
+            }, 3000);
+            return;
         }
     }
 
