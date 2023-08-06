@@ -46,7 +46,13 @@ const displayController = (() => {
         }
     }
 
-    return { boardSquares, updateScore };
+    const resetBoardUI = () => {
+        boardSquares.forEach(function (square) {
+            square.textContent = '';
+        })
+    }
+
+    return { boardSquares, updateScore, resetBoardUI };
 })();
 
 
@@ -57,7 +63,7 @@ const gameController = (() => {
     let currentTurn = user;
 
     const checkGameWinner = () => {
-        if (currentTurn.score === 3) {
+        if (scores[currentTurn.name] === 3) {
             console.log('winner is ' + currentTurn.name + '!');
             return currentTurn;
         }
@@ -92,7 +98,9 @@ const gameController = (() => {
                 if (checkRoundWinner()) {
                     currentTurn.increaseScore();
                     displayController.updateScore(currentTurn);
+                    resetBoard();
                     checkGameWinner();
+                    return;
                 }
                 currentTurn = computer;
                 return 'user';
@@ -101,12 +109,21 @@ const gameController = (() => {
                 if (checkRoundWinner()) {
                     currentTurn.increaseScore();
                     displayController.updateScore(currentTurn);
+                    resetBoard();
                     checkGameWinner();
+                    return;
                 }
                 currentTurn = user;
                 return 'computer';
             }
         }
+    }
+
+    const resetBoard = () => {
+        displayController.resetBoardUI();
+        gameBoard.board.forEach(function (value, i) {
+            gameBoard.board[i] = null;
+        })
     }
 
     return {handleSquareClick, user}

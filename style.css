@@ -55,7 +55,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue;
+    background-color: rgb(40, 40, 40);
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -64,6 +64,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    color: white;
 }
 
 #title {
@@ -82,8 +83,6 @@ body {
 .game-display {
     height: var(--heightArea);
     width: var(--widthArea);
-    background-color: gray;
-    border: 2px solid black;
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
