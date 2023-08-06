@@ -49,6 +49,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: aliceblue;
 }
 
 .game-display {
@@ -57,7 +58,7 @@ body {
     background-color: gray;
     border: 2px solid black;
     display: grid;
-    gap: 20px;
+    gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
@@ -69,4 +70,9 @@ body {
 
 .square {
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 5em;
 }
