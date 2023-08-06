@@ -44,17 +44,44 @@ table {
 
 /* ------------------------------------------ */
 
+:root {
+    --widthArea: 600px;
+    --heightArea: 600px;
+}
+
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: aliceblue;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+.game-info {
+    width: var(--widthArea);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.scores-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .game-display {
-    height: 600px;
-    width: 600px;
+    height: var(--heightArea);
+    width: var(--widthArea);
     background-color: gray;
     border: 2px solid black;
     display: grid;

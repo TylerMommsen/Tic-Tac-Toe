@@ -19,18 +19,14 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     const boardSquares = document.querySelectorAll('.square');
+
     boardSquares.forEach(function (square, index) {
         square.addEventListener('click', () => {
-            if (gameBoard.checkPosition(index)) {
-                if (gameController.currentTurn.name === 'User') {
-                    square.textContent = 'X';
-                    gameBoard.board[index] = 'X';
-                    gameController.currentTurn = gameController.computer;
-                } else {
-                    square.textContent = 'O';
-                    gameBoard.board[index] = 'O';
-                    gameController.currentTurn = gameController.user;
-                }
+            let current = gameController.handleSquareClick(index);
+            if (current === 'User') {
+                square.textContent = 'X';
+            } else if (current === 'Computer') {
+                square.textContent = 'O';
             }
         })
     })
@@ -51,5 +47,19 @@ const gameController = (() => {
         }
     }
 
-    return {currentTurn, user, computer, checkWinner}
+    const handleSquareClick = (index) => {
+        if (gameBoard.checkPosition(index)) {
+            if (currentTurn.name === 'User') {
+                gameBoard.board[index] = 'X';
+                currentTurn = computer;
+                return 'User';
+            } else {
+                gameBoard.board[index] = 'O';
+                currentTurn = user;
+                return 'Computer';
+            }
+        }
+    }
+
+    return {handleSquareClick}
 })();
