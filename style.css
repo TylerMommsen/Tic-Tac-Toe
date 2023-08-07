@@ -70,14 +70,8 @@ body {
 #title {
     text-align: center;
     font-weight: bold;
-    font-size: 3rem;
-}
-
-.scores-container {
-    display: flex;
-    justify-content: space-between;
+    font-size: 5rem;
     margin-bottom: 20px;
-    font-size: 2rem;
 }
 
 .dark-overlay {
@@ -91,6 +85,7 @@ body {
 
 .winner-display {
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -101,6 +96,18 @@ body {
     font-size: 15rem;
     color: white;
     z-index: 2;
+    gap: 50px;
+}
+
+#restart {
+    width: 400px;
+    height: 150px;
+    border-radius: 20px;
+    font-size: 5rem;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
 }
 
 .game-display {
